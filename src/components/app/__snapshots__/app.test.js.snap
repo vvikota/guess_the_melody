@@ -6,6 +6,7 @@ exports[`App correctly renders 1`] = `
 >
   <button
     className="welcome__button"
+    onClick={[Function]}
   >
     <span
       className="visually-hidden"
