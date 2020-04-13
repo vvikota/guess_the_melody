@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import AudioPlayer from "../audio-player/audio-player.jsx";
 
 const GenreQuestionScreen = ({question, onAnswer}) => {
   const {
@@ -14,10 +15,7 @@ const GenreQuestionScreen = ({question, onAnswer}) => {
       onAnswer();
     }}>
       {answers.map((it, i) => <div className="track" key={`answer-${i}`}>
-        <button className="track__button track__button--play" type="button"/>
-        <div className="track__status">
-          <audio />
-        </div>
+        <AudioPlayer src={it.src} />
         <div className="game__answer">
           <input type="checkbox" className="game__input visually-hidden" name="answer" value={`answer-${i}`}/>
           <label htmlFor={`answer-${i}`}>
