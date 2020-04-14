@@ -553,7 +553,7 @@ img {
   font-weight: 300;
   font-size: 33px;
   color: #230d1a;
-  margin-top: 300px; }
+  margin-top: 265px; }
 
 .welcome__text {
   margin: 0;
@@ -630,6 +630,7 @@ img {
   position: relative;
   z-index: 1;
   width: 440px;
+  margin-top: 160px;
   text-align: center; }
 
 .game__title {

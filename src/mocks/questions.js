@@ -5,19 +5,19 @@ const questions = [
     genre: `rock`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `./music/JK_leila.mp3`,
         genre: `rock`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `./music/Jah_Khalib_angela.mp3`,
         genre: `pop`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `./music/Animals.flac`,
         genre: `jazz`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `./music/Lullaby.flac`,
         genre: `rock`,
       },
     ],
@@ -26,19 +26,19 @@ const questions = [
     type: `artist`,
     song: {
       artist: `Jim Beam`,
-      src: `path.mp3`,
+      src: `./music/Jah_Khalib_angela.mp3`,
     },
     answers: [
       {
-        picture: `path.jpg`,
+        picture: `./img/artist_1.jpg`,
         artist: `John Snow`,
       },
       {
-        picture: `path.jpg`,
+        picture: `./img/artist_2.jpg`,
         artist: `Jack Daniels`,
       },
       {
-        picture: `path.jpg`,
+        picture: `./img/artist_3.jpg`,
         artist: `Jim Beam`,
       },
     ],
