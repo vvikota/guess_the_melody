@@ -3,32 +3,36 @@ import renderer from 'react-test-renderer';
 import ArtistQuestionScreen from './artist-question-screen.jsx';
 
 const mock = {
-
-  song: {
-    artist: `Jim Beam`,
-  },
   answers: [
     {
-      picture: ``,
+      picture: `./img/artist_1.jpg`,
       artist: `John Snow`,
     },
     {
-      picture: ``,
+      picture: `./img/artist_2.jpg`,
       artist: `Jack Daniels`,
     },
     {
-      picture: ``,
+      picture: `./img/artist_3.jpg`,
       artist: `Jim Beam`,
     },
   ],
+  song: {
+    artist: `Jim Beam`,
+    src: `./music/Jah_Khalib_angela.mp3`,
+  },
 };
 
 it(`ArtistQuestionScreen is correcctly render`, ()=> {
-  const {song, answers} = mock;
+
   const tree = renderer.create(<ArtistQuestionScreen
-    answers={answers}
-    song={song}
-  />).toJSON();
+    question={mock}
+    onAnswer={jest.fn()}
+  />, {
+    createNodeMock: () => {
+      return {};
+    }
+  }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

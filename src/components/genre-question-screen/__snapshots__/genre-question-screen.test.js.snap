@@ -13,12 +13,15 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
   </h2>
   <form
     className="game__tracks"
+    onSubmit={[Function]}
   >
     <div
       className="track"
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -47,6 +50,8 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -75,6 +80,8 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -103,6 +110,8 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
