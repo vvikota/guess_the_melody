@@ -47,8 +47,15 @@ class GenreQuestionScreen extends React.PureComponent {
 }
 
 GenreQuestionScreen.propTypes = {
-  question: PropTypes.object,
-  onAnswer: PropTypes.func,
+  onAnswer: PropTypes.func.isRequired,
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      genre: PropTypes.oneOf([`rock`, `jazz`, `pop`]).isRequired,
+    })).isRequired,
+    genre: PropTypes.oneOf([`rock`, `jazz`, `pop`]).isRequired,
+    type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
+  }).isRequired,
 };
 
 export default GenreQuestionScreen;

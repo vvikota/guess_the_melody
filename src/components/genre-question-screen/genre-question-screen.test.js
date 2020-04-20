@@ -4,6 +4,7 @@ import GenreQuestionScreen from './genre-question-screen.jsx';
 
 const mock = {
   genre: `rock`,
+  type: `genre`,
   answers: [
     {
       src: `./music/Jah_Khalib_angela.mp3`,
@@ -15,7 +16,7 @@ const mock = {
     },
     {
       src: `./music/Jah_Khalib_angela.mp3`,
-      genre: `blues`
+      genre: `pop`
     },
     {
       src: `./music/Jah_Khalib_angela.mp3`,

@@ -21,6 +21,7 @@ const mock = {
     artist: `Jim Beam`,
     src: `./music/Jah_Khalib_angela.mp3`,
   },
+  type: `artist`,
 };
 
 it(`ArtistQuestionScreen is correcctly render`, ()=> {

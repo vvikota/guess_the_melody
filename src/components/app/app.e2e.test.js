@@ -10,7 +10,7 @@ const mock = {
   questions: [
     {
       type: `genre`,
-      genre: `blues`,
+      genre: `pop`,
       answers: [
         {
           src: `path`,
@@ -22,7 +22,7 @@ const mock = {
         },
         {
           src: `path`,
-          genre: `blues`,
+          genre: `pop`,
         },
         {
           src: `path`,

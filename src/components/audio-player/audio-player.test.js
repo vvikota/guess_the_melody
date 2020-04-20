@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import AudioPlayer from './audio-player.jsx';
 
 const mock = {
-  isPlaying: true,
+  isPlaying: false,
   src: `./music/Jah_Khalib_angela.mp3`
 };
 

@@ -23,7 +23,7 @@ const WelcomeScreen = (props) => {
 WelcomeScreen.propTypes = {
   gameTime: PropTypes.number.isRequired,
   errorCount: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default WelcomeScreen;
