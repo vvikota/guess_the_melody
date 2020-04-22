@@ -26,11 +26,13 @@ class App extends React.PureComponent {
       case `genre`: return <GenreQuestionScreen
         question={currentQuestion}
         onAnswer={onUserAnswer}
+        key={`genre-question-screen-${question}`}
       />;
 
       case `artist` : return <ArtistQuestionScreen
         question={currentQuestion}
         onUserAnswer={onUserAnswer}
+        key={`artist-question-screen-${question}`}
       />;
     }
 

@@ -10,13 +10,12 @@ const gameSettings = {
 
 const init = (gameQuestions) => {
 
-  ReactDOM.render(
-      <App
-        errorCount={gameSettings.errorCount}
-        gameTime={gameSettings.gameTime}
-        questions={gameQuestions}
-      />,
-      document.querySelector(`.main`)
+  ReactDOM.render(<App
+    errorCount={gameSettings.errorCount}
+    gameTime={gameSettings.gameTime}
+    questions={gameQuestions}
+  />,
+  document.querySelector(`.main`)
   );
 };
 
