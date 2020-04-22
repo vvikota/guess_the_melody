@@ -45,9 +45,4 @@ const questions = [
   },
 ];
 
-const settings = {
-  gameTime: 5,
-  errorCount: 3,
-};
-
-export {questions, settings};
+export default questions;
