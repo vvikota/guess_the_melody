@@ -102,6 +102,13 @@ b,
 strong {
   font-weight: bold; }
 
+*,
+*:focus,
+*:active{
+  outline: 0 !important;
+  outline-offset: 0;
+}
+
 /**
  * Address styling not present in Safari and Chrome.
  */
@@ -630,7 +637,6 @@ img {
   position: relative;
   z-index: 1;
   width: 440px;
-  margin-top: 160px;
   text-align: center; }
 
 .game__title {

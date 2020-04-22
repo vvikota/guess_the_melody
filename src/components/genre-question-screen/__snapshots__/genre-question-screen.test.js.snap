@@ -34,11 +34,14 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
       >
         <input
           className="game__input visually-hidden"
+          id="answer-0"
           name="answer"
+          onChange={[Function]}
           type="checkbox"
           value="answer-0"
         />
         <label
+          className="game__check"
           htmlFor="answer-0"
         >
           Отметить
@@ -64,11 +67,14 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
       >
         <input
           className="game__input visually-hidden"
+          id="answer-1"
           name="answer"
+          onChange={[Function]}
           type="checkbox"
           value="answer-1"
         />
         <label
+          className="game__check"
           htmlFor="answer-1"
         >
           Отметить
@@ -94,11 +100,14 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
       >
         <input
           className="game__input visually-hidden"
+          id="answer-2"
           name="answer"
+          onChange={[Function]}
           type="checkbox"
           value="answer-2"
         />
         <label
+          className="game__check"
           htmlFor="answer-2"
         >
           Отметить
@@ -124,11 +133,14 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
       >
         <input
           className="game__input visually-hidden"
+          id="answer-3"
           name="answer"
+          onChange={[Function]}
           type="checkbox"
           value="answer-3"
         />
         <label
+          className="game__check"
           htmlFor="answer-3"
         >
           Отметить
