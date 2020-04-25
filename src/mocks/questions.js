@@ -1,5 +1,5 @@
 
-const questions = [
+export default [
   {
     type: `genre`,
     genre: `rock`,
@@ -44,5 +44,3 @@ const questions = [
     ],
   },
 ];
-
-export default questions;

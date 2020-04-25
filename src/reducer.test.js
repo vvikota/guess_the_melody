@@ -31,3 +31,16 @@ it(`Should reset state`, () => {
     mistakes: 0,
   });
 });
+
+it(`Should increment mistakes by a make mistake`, () => {
+  expect(reducer({
+    step: 0,
+    mistakes: 0,
+  }, {
+    type: `INCREMENT_MISTAKE`,
+    payload: 1,
+  })).toEqual({
+    step: 0,
+    mistakes: 1,
+  });
+});

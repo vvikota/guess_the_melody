@@ -12,7 +12,7 @@ exports[`App correctly renders 1`] = `
       href="#"
     >
       <span
-        className="visually-hidde"
+        className="visually-hidden"
       >
         Сыграть ещё раз
       </span>
@@ -80,7 +80,7 @@ exports[`App correctly renders 1`] = `
   >
     <button
       className="welcome__button"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       <span
         className="visually-hidden"
@@ -103,12 +103,12 @@ exports[`App correctly renders 1`] = `
     >
       <li>
         За 
-        0
+        10
          минут нужно ответить на все вопросы.
       </li>
       <li>
         Можно допустить 
-        0
+        Infinity
          ошибки.
       </li>
     </ul>

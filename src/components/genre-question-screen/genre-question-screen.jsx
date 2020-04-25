@@ -38,18 +38,16 @@ class GenreQuestionScreen extends React.PureComponent {
           />
           <div className="game__answer">
             <input
+              checked={this.state.userAnswer[i]}
               type="checkbox"
               className="game__input visually-hidden"
               name="answer"
               value={`answer-${i}`}
               id={`answer-${i}`}
               onChange={() => {
-                const userAnswer = this.state.userAnswer.slice(0);
+                const userAnswer = [...this.state.userAnswer];
                 userAnswer[i] = !userAnswer[i];
-
-                this.setState({
-                  userAnswer,
-                });
+                this.setState({userAnswer});
               }}
             />
             <label className="game__check" htmlFor={`answer-${i}`}>
@@ -61,6 +59,16 @@ class GenreQuestionScreen extends React.PureComponent {
         <button className="game__submit button" type="submit">Ответить</button>
       </form>
     </section>;
+  }
+
+  _checkedAnswers(array) {
+    const result = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].tagName === `INPUT` && array[i].checked) {
+        result.push(array[i].value);
+      }
+    }
+    return result;
   }
 }
 
