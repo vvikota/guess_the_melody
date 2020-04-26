@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
 import WelcomeScreen from "../welcom-screen/welcom-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
-import {ActionCreator} from "../../reducer.js";
+import ErrorCounter from "../errorCounter/errorCounter.jsx";
+
 
 const Type = {
   ARTIST: `game--artist`,
@@ -40,7 +42,6 @@ class App extends React.Component {
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
-            mistakes,
             maxMistakes
         )}
         key={`genre-question-screen-${question}`}
@@ -62,7 +63,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {questions, step} = this.props;
+    const {questions, step, mistakes} = this.props;
 
     return <section className={`game ${Type.ARTIST}`}>
       <header className="game__header">
@@ -81,17 +82,15 @@ class App extends React.Component {
           />
         </svg>
 
-        <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
+        {/* <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
           <span className="timer__mins">05</span>
           <span className="timer__dots">:</span>
           <span className="timer__secs">00</span>
-        </div>
+        </div> */}
 
-        <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-        </div>
+        <ErrorCounter
+          mistakes={mistakes}
+        />
 
       </header>
 

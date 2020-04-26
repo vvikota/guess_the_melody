@@ -15,6 +15,7 @@ const init = (gameQuestions, gameSettings) => {
     <App
       errorCount={gameSettings.errorCount}
       gameTime={gameSettings.gameTime}
+      maxMistakes={gameSettings.maxMistakes}
       questions={gameQuestions}
     />
   </Provider>,

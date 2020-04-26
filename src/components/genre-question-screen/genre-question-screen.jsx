@@ -23,6 +23,7 @@ class GenreQuestionScreen extends React.PureComponent {
     } = question;
 
     return <section className="game__screen">
+
       <h2 className="game__title">Выберите {genre} треки</h2>
       <form className="game__tracks" onSubmit={(evt) => {
         evt.preventDefault();
@@ -48,6 +49,8 @@ class GenreQuestionScreen extends React.PureComponent {
                 const userAnswer = [...this.state.userAnswer];
                 userAnswer[i] = !userAnswer[i];
                 this.setState({userAnswer});
+                // eslint-disable-next-line no-console
+                console.log(userAnswer);
               }}
             />
             <label className="game__check" htmlFor={`answer-${i}`}>
@@ -64,7 +67,7 @@ class GenreQuestionScreen extends React.PureComponent {
   _checkedAnswers(array) {
     const result = [];
     for (let i = 0; i < array.length; i++) {
-      if (array[i].tagName === `INPUT` && array[i].checked) {
+      if (array[i].tagName === `input` && array[i].checked) {
         result.push(array[i].value);
       }
     }
