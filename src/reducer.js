@@ -1,6 +1,6 @@
 const initialState = {
   step: -1,
-  mistakes: 5,
+  mistakes: 0,
 };
 
 const isArtistAnswerCorrect = (userAnswer, question) =>
