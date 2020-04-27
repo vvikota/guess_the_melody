@@ -64,6 +64,8 @@ class App extends React.Component {
 
   render() {
     const {questions, step, mistakes} = this.props;
+    // eslint-disable-next-line no-console
+    // console.log(mistakes);
 
     return <section className={`game ${Type.ARTIST}`}>
       <header className="game__header">
@@ -94,14 +96,15 @@ class App extends React.Component {
 
       </header>
 
-      {this._getScreen(questions[step])}
+      {this._getScreen(questions[step], (userAnswer) => {
+        this.props.onUserAnswer(questions[step], userAnswer);
+      })}
     </section>;
   }
 }
 
 App.propTypes = {
   gameTime: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
@@ -110,23 +113,28 @@ App.propTypes = {
   onWelcomeScreenClick: PropTypes.func.isRequired,
 };
 
-// тут state это что приходит из хранилища, а ownProps - это пропсы, например questions.
+// функция описывает как изменяются пропсы апп при измененеи редакс-стейта
+// фукция возвращает обьект , в ней описано как редакс-стейт преобразуется в пропсы аппа
+// тут state это что приходит из хранилища, а ownProps - это пропсы которые передаются внутрь аппа, например questions.
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  // тут step это пропсы аппа , а state.step это стейт из хранилища редакс
   step: state.step,
   mistakes: state.mistakes,
 });
+// сокращенно можно описать так(потому что проперти совпадают)
+// const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, state);
 
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
 
   onUserAnswer: (question, userAnswer, mistakes, maxMistakes) => {
-    dispatch(ActionCreator.incrementStep());
-    dispatch(ActionCreator.incrementStep(
+    dispatch(ActionCreator.incrementMistake(
         userAnswer,
         question,
         mistakes,
         maxMistakes
     ));
+    dispatch(ActionCreator.incrementStep());
   }
 });
 

@@ -28,6 +28,8 @@ class GenreQuestionScreen extends React.PureComponent {
       <form className="game__tracks" onSubmit={(evt) => {
         evt.preventDefault();
         onAnswer(this.state.userAnswer);
+        // eslint-disable-next-line no-console
+        // console.log(this.state.userAnswer);
       }}>
         {answers.map((it, i) => <div className="track" key={`answer-${i}`}>
           <AudioPlayer

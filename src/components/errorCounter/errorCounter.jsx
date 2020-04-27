@@ -6,7 +6,7 @@ const ErrorCounter = (props) => {
 
   return (
     <div className="game__mistakes">
-      {Array.from({length: mistakes}, (v, k) => k).map((it) => <div className="wrong" key={it}/>)}
+      {new Array(mistakes).fill(1).map((it, index) => <div className="wrong" key={index}/>)}
     </div>
   );
 };

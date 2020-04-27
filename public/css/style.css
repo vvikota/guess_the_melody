@@ -365,7 +365,7 @@ th {
 /*
  * Каркас сайта
  */
-@font-face {
+/* @font-face {
   font-family: "Fira Sans";
   font-weight: 300;
   font-style: normal;
@@ -391,7 +391,7 @@ th {
   font-weight: 500;
   font-style: italic;
   font-display: swap;
-  src: url("../fonts/FiraSans-MediumItalic.woff2") format("woff2"), url("../fonts/FiraSans-MediumItalic.woff") format("woff"); }
+  src: url("../fonts/FiraSans-MediumItalic.woff2") format("woff2"), url("../fonts/FiraSans-MediumItalic.woff") format("woff"); } */
 
 *,
 *::before,

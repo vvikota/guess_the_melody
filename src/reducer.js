@@ -19,6 +19,8 @@ const ActionCreator = {
   }),
 
   incrementMistake: (userAnswer, question, mistakes, maxMistakes) => {
+    // eslint-disable-next-line no-console
+    console.log(`check answer`);
     let answerIsCorrect = false;
 
     switch (question.tupe) {
