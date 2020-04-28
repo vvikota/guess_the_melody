@@ -43,4 +43,26 @@ export default [
       },
     ],
   },
+  {
+    type: `genre`,
+    genre: `pop`,
+    answers: [
+      {
+        src: `./music/JK_leila.mp3`,
+        genre: `pop`,
+      },
+      {
+        src: `./music/Jah_Khalib_angela.mp3`,
+        genre: `pop`,
+      },
+      {
+        src: `./music/Animals.flac`,
+        genre: `rock`,
+      },
+      {
+        src: `./music/Lullaby.flac`,
+        genre: `rock`,
+      },
+    ],
+  },
 ];

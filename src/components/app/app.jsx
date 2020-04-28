@@ -130,14 +130,15 @@ const mapDispatchToProps = (dispatch) => ({
 
   onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
     // eslint-disable-next-line no-console
-    // console.log(userAnswer, question, mistakes, maxMistakes);
+    // console.log(step);
+    dispatch(ActionCreator.incrementStep());
+
     dispatch(ActionCreator.incrementMistake(
         userAnswer,
         question,
         mistakes,
         maxMistakes
     ));
-    dispatch(ActionCreator.incrementStep());
   }
 });
 
