@@ -13,7 +13,6 @@ const init = (gameQuestions, gameSettings) => {
 
   ReactDOM.render(<Provider store={store}>
     <App
-      errorCount={gameSettings.errorCount}
       gameTime={gameSettings.gameTime}
       maxMistakes={gameSettings.maxMistakes}
       questions={gameQuestions}

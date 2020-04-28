@@ -6,7 +6,7 @@ export default [
     answers: [
       {
         src: `./music/JK_leila.mp3`,
-        genre: `rock`,
+        genre: `pop`,
       },
       {
         src: `./music/Jah_Khalib_angela.mp3`,
@@ -14,7 +14,7 @@ export default [
       },
       {
         src: `./music/Animals.flac`,
-        genre: `jazz`,
+        genre: `rock`,
       },
       {
         src: `./music/Lullaby.flac`,
@@ -25,7 +25,7 @@ export default [
   {
     type: `artist`,
     song: {
-      artist: `Jim Beam`,
+      artist: `Jah_Khalib`,
       src: `./music/Jah_Khalib_angela.mp3`,
     },
     answers: [
@@ -35,7 +35,7 @@ export default [
       },
       {
         picture: `./img/artist_2.jpg`,
-        artist: `Jack Daniels`,
+        artist: `Jah_Khalib`,
       },
       {
         picture: `./img/artist_3.jpg`,

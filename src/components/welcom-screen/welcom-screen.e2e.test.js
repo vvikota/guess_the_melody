@@ -8,8 +8,8 @@ Enzyme.configure({adapter: new Adapter()});
 it(`Click on start game button, correctly works`, () => {
   const clickHandler = jest.fn();
   const welcomeScreen = shallow(<WelcomeScreen
-    errorCount={0}
-    gameTime={0}
+    maxMistakes={3}
+    gameTime={5}
     onClick={clickHandler}
   />);
 

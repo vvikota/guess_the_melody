@@ -52,7 +52,7 @@ class GenreQuestionScreen extends React.PureComponent {
                 userAnswer[i] = !userAnswer[i];
                 this.setState({userAnswer});
                 // eslint-disable-next-line no-console
-                console.log(userAnswer);
+                // console.log(userAnswer);
               }}
             />
             <label className="game__check" htmlFor={`answer-${i}`}>

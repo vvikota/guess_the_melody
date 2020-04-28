@@ -5,8 +5,8 @@ import WelcomeScreen from './welcom-screen';
 it(`WelcomeScreen renders`, ()=> {
   const tree = renderer
     .create(<WelcomeScreen
-      gameTime={0}
-      errorCount={0}
+      gameTime={5}
+      maxMistakes={3}
       onClick={jest.fn()}
     />)
     .toJSON();

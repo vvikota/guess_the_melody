@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WelcomeScreen = (props) => {
-  const {gameTime, errorCount, onClick} = props;
+  const {gameTime, maxMistakes, onClick} = props;
 
   return (
     <section className="welcome">
@@ -13,7 +13,7 @@ const WelcomeScreen = (props) => {
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
         <li>За {gameTime} минут нужно ответить на все вопросы.</li>
-        <li>Можно допустить {errorCount} ошибки.</li>
+        <li>Можно допустить {maxMistakes} ошибки.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
     </section>
@@ -22,7 +22,7 @@ const WelcomeScreen = (props) => {
 
 WelcomeScreen.propTypes = {
   gameTime: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
+  maxMistakes: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

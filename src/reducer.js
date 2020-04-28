@@ -8,9 +8,8 @@ const isArtistAnswerCorrect = (userAnswer, question) =>
 
 const isGenreAnswerCorrect = (userAnswer, question) =>
   userAnswer.every((it, i) => it === (
-    question.answer[i].genre === question.genre
+    question.answers[i].genre === question.genre
   ));
-
 
 const ActionCreator = {
   incrementStep: () => ({
@@ -20,15 +19,23 @@ const ActionCreator = {
 
   incrementMistake: (userAnswer, question, mistakes, maxMistakes) => {
     // eslint-disable-next-line no-console
-    console.log(`check answer`);
+    // console.log(userAnswer, question, mistakes, maxMistakes);
     let answerIsCorrect = false;
+    // eslint-disable-next-line no-console
+    // console.log(answerIsCorrect);
 
-    switch (question.tupe) {
+    switch (question.type) {
       case `artist`:
+        // eslint-disable-next-line no-console
+        //  console.log(answerIsCorrect);
         answerIsCorrect = isArtistAnswerCorrect(userAnswer, question);
+        // eslint-disable-next-line no-console
+        // console.log(answerIsCorrect);
         break;
       case `genre`:
         answerIsCorrect = isGenreAnswerCorrect(userAnswer, question);
+        // eslint-disable-next-line no-console
+        // console.log(answerIsCorrect);
         break;
     }
 
@@ -64,7 +71,5 @@ const reducer = (state = initialState, action) => {
 
 export {
   reducer,
-  ActionCreator,
-  isArtistAnswerCorrect,
-  isGenreAnswerCorrect
+  ActionCreator
 };

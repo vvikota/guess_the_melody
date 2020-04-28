@@ -25,7 +25,7 @@ class App extends React.Component {
 
       return <WelcomeScreen
         gameTime={gameTime}
-        errorCount={maxMistakes}
+        maxMistakes={maxMistakes}
         onClick={onWelcomeScreenClick}
       />;
     }
@@ -39,9 +39,11 @@ class App extends React.Component {
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
         question={question}
+        // onAnswer={cb}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
+            mistakes,
             maxMistakes
         )}
         key={`genre-question-screen-${question}`}
@@ -49,6 +51,7 @@ class App extends React.Component {
 
       case `artist` : return <ArtistQuestionScreen
         question={question}
+        // onAnswer={cb}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
@@ -65,7 +68,7 @@ class App extends React.Component {
   render() {
     const {questions, step, mistakes} = this.props;
     // eslint-disable-next-line no-console
-    // console.log(mistakes);
+    // console.log(`${maxMistakes} in render`);
 
     return <section className={`game ${Type.ARTIST}`}>
       <header className="game__header">
@@ -96,9 +99,7 @@ class App extends React.Component {
 
       </header>
 
-      {this._getScreen(questions[step], (userAnswer) => {
-        this.props.onUserAnswer(questions[step], userAnswer);
-      })}
+      {this._getScreen(questions[step])}
     </section>;
   }
 }
@@ -127,7 +128,9 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
 
-  onUserAnswer: (question, userAnswer, mistakes, maxMistakes) => {
+  onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
+    // eslint-disable-next-line no-console
+    // console.log(userAnswer, question, mistakes, maxMistakes);
     dispatch(ActionCreator.incrementMistake(
         userAnswer,
         question,
