@@ -52,7 +52,6 @@ const ActionCreator = {
   },
 };
 
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case `INCREMENT_STEP`: return Object.assign({}, state, {

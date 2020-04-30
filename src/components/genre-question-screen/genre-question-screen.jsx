@@ -9,13 +9,13 @@ class GenreQuestionScreen extends React.PureComponent {
     const {answers} = question;
 
     this.state = {
-      activePlayer: -1,
+      // activePlayer: -1,
       userAnswer: new Array(answers.length).fill(false),
     };
   }
 
   render() {
-    const {question, onAnswer} = this.props;
+    const {question, onAnswer, activePlayer, onPlayButtonClick} = this.props;
 
     const {
       answers,
@@ -34,10 +34,8 @@ class GenreQuestionScreen extends React.PureComponent {
         {answers.map((it, i) => <div className="track" key={`answer-${i}`}>
           <AudioPlayer
             src={it.src}
-            isPlaying={i === this.state.activePlayer}
-            onPlayButtonClick = {() => this.setState({
-              activePlayer: this.state.activePlayer === i ? -1 : i
-            })}
+            isPlaying={i === activePlayer}
+            onPlayButtonClick = {() => onPlayButtonClick(i)}
           />
           <div className="game__answer">
             <input
@@ -65,19 +63,11 @@ class GenreQuestionScreen extends React.PureComponent {
       </form>
     </section>;
   }
-
-  _checkedAnswers(array) {
-    const result = [];
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].tagName === `input` && array[i].checked) {
-        result.push(array[i].value);
-      }
-    }
-    return result;
-  }
 }
 
 GenreQuestionScreen.propTypes = {
+  activePlayer: PropTypes.number.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({

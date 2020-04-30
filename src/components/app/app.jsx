@@ -7,7 +7,9 @@ import WelcomeScreen from "../welcom-screen/welcom-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
 
+const QuestionGenreScreenWrapped = withActivePlayer(GenreQuestionScreen);
 
 const Type = {
   ARTIST: `game--artist`,
@@ -37,9 +39,8 @@ class App extends React.Component {
     } = this.props;
 
     switch (question.type) {
-      case `genre`: return <GenreQuestionScreen
+      case `genre`: return <QuestionGenreScreenWrapped
         question={question}
-        // onAnswer={cb}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
@@ -51,7 +52,6 @@ class App extends React.Component {
 
       case `artist` : return <ArtistQuestionScreen
         question={question}
-        // onAnswer={cb}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
