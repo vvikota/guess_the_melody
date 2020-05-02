@@ -11,6 +11,7 @@ import withActivePlayer from "../../hocs/with-active-player/with-active-player.j
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
 import withTransformProps from "../../hocs/with-transform-props/with-transform-props.js";
 
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 const QuestionGenreScreenWrapped = withUserAnswer(
     withActivePlayer(
         withTransformProps((props) => {
@@ -59,7 +60,7 @@ class App extends React.Component {
         key={`genre-question-screen-${question}`}
       />;
 
-      case `artist` : return <ArtistQuestionScreen
+      case `artist` : return <ArtistQuestionScreenWrapped
         question={question}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
