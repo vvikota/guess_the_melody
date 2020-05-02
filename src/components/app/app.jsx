@@ -8,8 +8,9 @@ import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
 
-const QuestionGenreScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const QuestionGenreScreenWrapped = withUserAnswer(withActivePlayer(GenreQuestionScreen));
 
 const Type = {
   ARTIST: `game--artist`,
@@ -41,6 +42,7 @@ class App extends React.Component {
     switch (question.type) {
       case `genre`: return <QuestionGenreScreenWrapped
         question={question}
+        answers={question.answers}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,

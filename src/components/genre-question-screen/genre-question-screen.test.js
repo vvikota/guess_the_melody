@@ -31,6 +31,8 @@ it(`GenreQuestionScreen is correctly render`, ()=> {
     question={mock}
     onAnswer={jest.fn()}
     activePlayer={-1}
+    userAnswer={[]}
+    onChange={jest.fn()}
     onPlayButtonClick={jest.fn()}
   />, {
     createNodeMock: () => {
