@@ -4,6 +4,7 @@ import AudioPlayer from './audio-player.jsx';
 
 const mock = {
   isPlaying: false,
+  isLoading: true,
   src: `./music/Jah_Khalib_angela.mp3`
 };
 
@@ -12,6 +13,7 @@ it(`Audioplayer is correctly render`, () => {
   .create(<AudioPlayer
     isPlaying={mock.isPlaying}
     onPlayButtonClick={jest.fn()}
+    isLoading={mock.isLoading}
     src={mock.src}
   />, {
     createNodeMock: () => {
