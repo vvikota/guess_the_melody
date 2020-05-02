@@ -9,8 +9,15 @@ import ArtistQuestionScreen from "../artist-question-screen/artist-question-scre
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
+import withTransformProps from "../../hocs/with-transform-props/with-transform-props.js";
 
-const QuestionGenreScreenWrapped = withUserAnswer(withActivePlayer(GenreQuestionScreen));
+const QuestionGenreScreenWrapped = withUserAnswer(
+    withActivePlayer(
+        withTransformProps((props) => {
+          return Object.assign({}, props, {
+            renderAnswer: props.renderPlayer,
+          });
+        })(GenreQuestionScreen)));
 
 const Type = {
   ARTIST: `game--artist`,

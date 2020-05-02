@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import AudioPlayer from "../audio-player/audio-player.jsx";
 
 class GenreQuestionScreen extends React.PureComponent {
 
@@ -8,10 +7,9 @@ class GenreQuestionScreen extends React.PureComponent {
     const {
       question,
       onAnswer,
-      activePlayer,
-      onPlayButtonClick,
       userAnswer,
       onChange,
+      renderAnswer,
     } = this.props;
 
     const {
@@ -25,15 +23,10 @@ class GenreQuestionScreen extends React.PureComponent {
       <form className="game__tracks" onSubmit={(evt) => {
         evt.preventDefault();
         onAnswer();
-        // eslint-disable-next-line no-console
-        // console.log(this.state.userAnswer);
       }}>
         {answers.map((it, i) => <div className="track" key={`answer-${i}`}>
-          <AudioPlayer
-            src={it.src}
-            isPlaying={i === activePlayer}
-            onPlayButtonClick = {() => onPlayButtonClick(i)}
-          />
+
+          {renderAnswer(it, i)}
           <div className="game__answer">
             <input
               checked={userAnswer[i]}
@@ -57,8 +50,6 @@ class GenreQuestionScreen extends React.PureComponent {
 }
 
 GenreQuestionScreen.propTypes = {
-  activePlayer: PropTypes.number.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
   onAnswer: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   question: PropTypes.shape({
@@ -70,6 +61,7 @@ GenreQuestionScreen.propTypes = {
     type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
   }).isRequired,
   userAnswer: PropTypes.arrayOf(PropTypes.bool).isRequired,
+  renderAnswer: PropTypes.func.isRequired,
 };
 
 export default GenreQuestionScreen;
