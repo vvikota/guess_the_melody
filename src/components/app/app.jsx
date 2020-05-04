@@ -6,6 +6,8 @@ import {ActionCreator} from "../../reducer.js";
 import WelcomeScreen from "../welcom-screen/welcom-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
+import GameOverScreen from "../game-over-screen/game-over-screen.jsx";
+import WinScreen from "../win-screen/win-screen.jsx";
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
@@ -27,25 +29,41 @@ const Type = {
 class App extends React.Component {
 
   _getScreen(question) {
+    console.log(this.props.question);
     if (!question) {
-      const {
-        gameTime,
-        maxMistakes,
-        onWelcomeScreenClick
-      } = this.props;
+      const {step, questions} = this.props;
 
-      return <WelcomeScreen
-        gameTime={gameTime}
-        maxMistakes={maxMistakes}
-        onClick={onWelcomeScreenClick}
-      />;
+      if (step > questions.length - 1) {
+        return <WinScreen
+          onRelaunchButtonClick={resetGame}
+        />;
+      } else {
+        const {
+          gameTime,
+          maxMistakes,
+          onWelcomeScreenClick
+        } = this.props;
+
+        return <WelcomeScreen
+          gameTime={gameTime}
+          maxMistakes={maxMistakes}
+          onClick={onWelcomeScreenClick}
+        />;
+      }
     }
 
     const {
       onUserAnswer,
       mistakes,
       maxMistakes,
+      resetGame,
     } = this.props;
+
+    if (mistakes >= maxMistakes) {
+      return <GameOverScreen
+        onRelaunchButtonClick={resetGame}
+      />;
+    }
 
     switch (question.type) {
       case `genre`: return <QuestionGenreScreenWrapped
@@ -54,8 +72,6 @@ class App extends React.Component {
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
-            mistakes,
-            maxMistakes
         )}
         key={`genre-question-screen-${question}`}
       />;
@@ -65,8 +81,6 @@ class App extends React.Component {
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
             question,
-            mistakes,
-            maxMistakes
         )}
         key={`artist-question-screen-${question}`}
       />;
@@ -122,6 +136,7 @@ App.propTypes = {
   onUserAnswer: PropTypes.func.isRequired,
   maxMistakes: PropTypes.number.isRequired,
   onWelcomeScreenClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 // функция описывает как изменяются пропсы апп при измененеи редакс-стейта
@@ -138,18 +153,18 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
 
-  onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
+  onUserAnswer: (userAnswer, question) => {
     // eslint-disable-next-line no-console
     // console.log(step);
     dispatch(ActionCreator.incrementStep());
 
     dispatch(ActionCreator.incrementMistake(
         userAnswer,
-        question,
-        mistakes,
-        maxMistakes
+        question
     ));
-  }
+  },
+
+  resetGame: () => dispatch(ActionCreator.resetGame()),
 });
 
 export {App};

@@ -14,7 +14,7 @@ it(`Audioplayer is correctly render`, () => {
     isPlaying={mock.isPlaying}
     onPlayButtonClick={jest.fn()}
     isLoading={mock.isLoading}
-    src={mock.src}
+    renderAudio={jest.fn()}
   />, {
     createNodeMock: () => {
       return {};
