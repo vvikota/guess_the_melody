@@ -115,17 +115,15 @@ const withScreenSwitch = (Component) => {
 export {withScreenSwitch};
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  questions: state.questions,
   step: state.step,
   mistakes: state.mistakes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
-
   onUserAnswer: (userAnswer, question) => {
-
     dispatch(ActionCreator.incrementStep());
-
     dispatch(ActionCreator.incrementMistake(
         userAnswer,
         question

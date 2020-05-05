@@ -56,7 +56,10 @@ App.propTypes = {
   mistakes: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {step: state.step});
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  questions: state.questions,
+  step: state.step,
+});
 
 export {App};
 

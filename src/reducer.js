@@ -1,6 +1,9 @@
+import questions from "./mocks/questions";
+
 const initialState = {
   step: -1,
   mistakes: 0,
+  questions: []
 };
 
 const isArtistAnswerCorrect = (userAnswer, question) =>
@@ -12,6 +15,7 @@ const isGenreAnswerCorrect = (userAnswer, question) =>
   ));
 
 const ActionCreator = {
+
   incrementStep: () => ({
     type: `INCREMENT_STEP`,
     payload: 1,
@@ -35,6 +39,13 @@ const ActionCreator = {
     };
   },
 
+  loadQuestions: () => {
+    return {
+      type: `LOAD_QUESTIONS`,
+      payload: questions,
+    };
+  },
+
   resetGame: () => {
     return {
       type: `RESET_GAME`,
@@ -52,6 +63,10 @@ const reducer = (state = initialState, action) => {
 
     case `INCREMENT_MISTAKE`: return Object.assign({}, state, {
       mistakes: state.mistakes + action.payload,
+    });
+
+    case `LOAD_QUESTIONS`: return Object.assign({}, state, {
+      questions: action.payload,
     });
   }
 
