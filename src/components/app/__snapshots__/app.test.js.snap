@@ -45,48 +45,5 @@ exports[`App correctly renders 1`] = `
       className="game__mistakes"
     />
   </header>
-  <section
-    className="welcome"
-  >
-    <button
-      className="welcome__button"
-      onClick={[MockFunction]}
-    >
-      <span
-        className="visually-hidden"
-      >
-        Начать игру
-      </span>
-    </button>
-    <h2
-      className="welcome__rules-title"
-    >
-      Правила игры
-    </h2>
-    <p
-      className="welcome__text"
-    >
-      Правила просты:
-    </p>
-    <ul
-      className="welcome__rules-list"
-    >
-      <li>
-        За 
-        10
-         минут нужно ответить на все вопросы.
-      </li>
-      <li>
-        Можно допустить 
-        Infinity
-         ошибки.
-      </li>
-    </ul>
-    <p
-      className="welcome__text"
-    >
-      Удачи!
-    </p>
-  </section>
 </section>
 `;

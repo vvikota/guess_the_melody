@@ -1,101 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
 
-import WelcomeScreen from "../welcom-screen/welcom-screen.jsx";
-import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
-import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
-import GameOverScreen from "../game-over-screen/game-over-screen.jsx";
-import WinScreen from "../win-screen/win-screen.jsx";
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
-import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
-import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
-import withTransformProps from "../../hocs/with-transform-props/with-transform-props.js";
-
-const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
-const QuestionGenreScreenWrapped = withUserAnswer(
-    withActivePlayer(
-        withTransformProps((props) => {
-          return Object.assign({}, props, {
-            renderAnswer: props.renderPlayer,
-          });
-        })(GenreQuestionScreen)));
 
 const Type = {
   ARTIST: `game--artist`,
   GENRE: `game--genre`,
 };
+
 class App extends React.Component {
-
-  _getScreen(question) {
-    // eslint-disable-next-line no-console
-    // console.log(question);
-    if (!question) {
-      // eslint-disable-next-line no-console
-      // console.log(question);
-      const {step, questions, mistakes, maxMistakes} = this.props;
-
-      if (step > questions.length - 1) {
-        // eslint-disable-next-line no-console
-        console.log(mistakes, maxMistakes);
-        if (mistakes >= maxMistakes) {
-          return <GameOverScreen
-            onRelaunchButtonClick={resetGame}
-          />;
-        } else {
-          return <WinScreen
-            onRelaunchButtonClick={resetGame}
-          />;
-        }
-      } else {
-        const {
-          gameTime,
-          onWelcomeScreenClick,
-        } = this.props;
-
-        return <WelcomeScreen
-          gameTime={gameTime}
-          maxMistakes={maxMistakes}
-          onClick={onWelcomeScreenClick}
-        />;
-      }
-    }
-
-    const {
-      onUserAnswer,
-      resetGame,
-    } = this.props;
-
-    switch (question.type) {
-      case `genre`: return <QuestionGenreScreenWrapped
-        question={question}
-        answers={question.answers}
-        onAnswer={(userAnswer) => onUserAnswer(
-            userAnswer,
-            question
-        )}
-        key={`genre-question-screen-${question}`}
-      />;
-
-      case `artist` : return <ArtistQuestionScreenWrapped
-        question={question}
-        onAnswer={(userAnswer) => onUserAnswer(
-            userAnswer,
-            question
-        )}
-        key={`artist-question-screen-${question}`}
-      />;
-    }
-
-    return null;
-  }
 
   render() {
     const {questions, step, mistakes} = this.props;
-    // eslint-disable-next-line no-console
-    // console.log(this.props);
-    // console.log(questions[step]);
 
     return <section className={`game ${Type.ARTIST}`}>
       <header className="game__header">
@@ -126,7 +43,7 @@ class App extends React.Component {
 
       </header>
 
-      {this._getScreen(questions[step])}
+      {this.props.renderScreen(questions[step])}
     </section>;
   }
 }
@@ -135,41 +52,12 @@ App.propTypes = {
   gameTime: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   step: PropTypes.number.isRequired,
+  renderScreen: PropTypes.func.isRequired,
   mistakes: PropTypes.number.isRequired,
-  onUserAnswer: PropTypes.func.isRequired,
-  maxMistakes: PropTypes.number.isRequired,
-  onWelcomeScreenClick: PropTypes.func.isRequired,
-  resetGame: PropTypes.func.isRequired,
 };
 
-// функция описывает как изменяются пропсы апп при измененеи редакс-стейта
-// фукция возвращает обьект , в ней описано как редакс-стейт преобразуется в пропсы аппа
-// тут state это что приходит из хранилища, а ownProps - это пропсы которые передаются внутрь аппа, например questions.
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  // тут step это пропсы аппа , а state.step это стейт из хранилища редакс
-  step: state.step,
-  mistakes: state.mistakes,
-});
-// сокращенно можно описать так(потому что проперти совпадают)
-// const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, state);
-
-const mapDispatchToProps = (dispatch) => ({
-  onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
-
-  onUserAnswer: (userAnswer, question) => {
-    // eslint-disable-next-line no-console
-    // console.log(step);
-    dispatch(ActionCreator.incrementStep());
-
-    dispatch(ActionCreator.incrementMistake(
-        userAnswer,
-        question
-    ));
-  },
-
-  resetGame: () => dispatch(ActionCreator.resetGame()),
-});
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {step: state.step});
 
 export {App};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

@@ -25,7 +25,7 @@ it(`Should reset state`, () => {
     step: 10,
     mistakes: 3,
   }, {
-    type: `RESET_STATE`,
+    type: `RESET_GAME`,
   })).toEqual({
     step: -1,
     mistakes: 0,
