@@ -12,7 +12,10 @@ import withScreenSwitch from "./hocs/with-screen-switch/with-screen-switch.js";
 const AppWrapped = withScreenSwitch(App);
 
 const init = (gameQuestions, gameSettings) => {
-  const store = createStore(reducer);
+  const store = createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
   ReactDOM.render(<Provider store={store}>
     <AppWrapped

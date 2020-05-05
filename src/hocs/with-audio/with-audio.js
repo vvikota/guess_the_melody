@@ -32,7 +32,6 @@ const withAudio = (Component) => {
       );
     }
 
-
     componentDidMount() {
       const {src} = this.props;
       const audio = this._audioRef.current;
