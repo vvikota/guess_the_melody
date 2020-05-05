@@ -29,19 +29,29 @@ const Type = {
 class App extends React.Component {
 
   _getScreen(question) {
-    console.log(this.props.question);
+    // eslint-disable-next-line no-console
+    // console.log(question);
     if (!question) {
-      const {step, questions} = this.props;
+      // eslint-disable-next-line no-console
+      // console.log(question);
+      const {step, questions, mistakes, maxMistakes} = this.props;
 
       if (step > questions.length - 1) {
-        return <WinScreen
-          onRelaunchButtonClick={resetGame}
-        />;
+        // eslint-disable-next-line no-console
+        console.log(mistakes, maxMistakes);
+        if (mistakes >= maxMistakes) {
+          return <GameOverScreen
+            onRelaunchButtonClick={resetGame}
+          />;
+        } else {
+          return <WinScreen
+            onRelaunchButtonClick={resetGame}
+          />;
+        }
       } else {
         const {
           gameTime,
-          maxMistakes,
-          onWelcomeScreenClick
+          onWelcomeScreenClick,
         } = this.props;
 
         return <WelcomeScreen
@@ -54,16 +64,8 @@ class App extends React.Component {
 
     const {
       onUserAnswer,
-      mistakes,
-      maxMistakes,
       resetGame,
     } = this.props;
-
-    if (mistakes >= maxMistakes) {
-      return <GameOverScreen
-        onRelaunchButtonClick={resetGame}
-      />;
-    }
 
     switch (question.type) {
       case `genre`: return <QuestionGenreScreenWrapped
@@ -71,7 +73,7 @@ class App extends React.Component {
         answers={question.answers}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
-            question,
+            question
         )}
         key={`genre-question-screen-${question}`}
       />;
@@ -80,7 +82,7 @@ class App extends React.Component {
         question={question}
         onAnswer={(userAnswer) => onUserAnswer(
             userAnswer,
-            question,
+            question
         )}
         key={`artist-question-screen-${question}`}
       />;
@@ -92,7 +94,8 @@ class App extends React.Component {
   render() {
     const {questions, step, mistakes} = this.props;
     // eslint-disable-next-line no-console
-    // console.log(`${maxMistakes} in render`);
+    // console.log(this.props);
+    // console.log(questions[step]);
 
     return <section className={`game ${Type.ARTIST}`}>
       <header className="game__header">
