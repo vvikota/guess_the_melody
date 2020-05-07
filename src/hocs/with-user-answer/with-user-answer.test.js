@@ -13,19 +13,19 @@ const mock = {
     answers: [
       {
         src: `./music/JK_leila.mp3`,
-        genre: `pop`,
+        genre: `country`,
       },
       {
         src: `./music/Jah_Khalib_angela.mp3`,
-        genre: `pop`,
+        genre: `reggae`,
       },
       {
         src: `./music/Animals.flac`,
-        genre: `rock`,
+        genre: `country`,
       },
       {
         src: `./music/Lullaby.flac`,
-        genre: `rock`,
+        genre: `reggae`,
       },
     ],
   },

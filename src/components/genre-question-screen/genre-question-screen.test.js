@@ -3,24 +3,24 @@ import renderer from 'react-test-renderer';
 import GenreQuestionScreen from './genre-question-screen.jsx';
 
 const mock = {
-  genre: `rock`,
+  genre: `electronic`,
   type: `genre`,
   answers: [
     {
       src: `./music/Jah_Khalib_angela.mp3`,
-      genre: `rock`
+      genre: `reggae`
     },
     {
       src: `./music/Jah_Khalib_angela.mp3`,
-      genre: `jazz`
+      genre: `reggae`
     },
     {
       src: `./music/Jah_Khalib_angela.mp3`,
-      genre: `pop`
+      genre: `electronic`
     },
     {
       src: `./music/Jah_Khalib_angela.mp3`,
-      genre: `jazz`
+      genre: `electronic`
     },
   ]
 };

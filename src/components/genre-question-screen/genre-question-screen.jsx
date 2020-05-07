@@ -58,7 +58,7 @@ GenreQuestionScreen.propTypes = {
       genre: PropTypes.oneOf([`electronic`, `country`, `alternative`, `reggae`]).isRequired,
     })).isRequired,
     genre: PropTypes.oneOf([`electronic`, `country`, `alternative`, `reggae`]).isRequired,
-    type: PropTypes.oneOf([`electronic`, `country`, `alternative`, `reggae`]).isRequired,
+    type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
   }).isRequired,
   userAnswer: PropTypes.arrayOf(PropTypes.bool).isRequired,
   renderAnswer: PropTypes.func.isRequired,

@@ -8,7 +8,7 @@ exports[`GenreQuestionScreen is correctly render 1`] = `
     className="game__title"
   >
     Выберите 
-    rock
+    electronic
      треки
   </h2>
   <form
