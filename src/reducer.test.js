@@ -1,4 +1,6 @@
-import {reducer} from "./reducer.js";
+import MockAdapter from "axios-mock-adapter";
+import {reducer, Operation} from "./reducer.js";
+import api from "./api";
 
 it(`Should return initial state by default`, () => {
   expect(reducer(undefined, {})).toEqual({
@@ -45,4 +47,23 @@ it(`Should increment mistakes by a make mistake`, () => {
     step: 0,
     mistakes: 1,
   });
+});
+
+it(`Should make a correct API call to /questions`, function () {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const questionLoader = Operation.loadQuestions();
+
+  apiMock
+    .onGet(`/questions`)
+    .reply(200, [{fake: true}]);
+
+  return questionLoader(dispatch)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: `LOAD_QUESTIONS`,
+        payload: [{fake: true}],
+      });
+    });
 });
