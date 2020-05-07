@@ -4,8 +4,6 @@ it(`Should return initial state by default`, () => {
   expect(reducer(undefined, {})).toEqual({
     step: -1,
     mistakes: 0,
-    questions: [],
-    isAuthorizationRequired: false,
   });
 });
 
@@ -31,8 +29,6 @@ it(`Should reset state`, () => {
   })).toEqual({
     step: -1,
     mistakes: 0,
-    questions: [],
-    isAuthorizationRequired: false,
   });
 });
 
