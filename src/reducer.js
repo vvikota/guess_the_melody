@@ -1,9 +1,9 @@
-import api from "./api";
 
 const initialState = {
   step: -1,
   mistakes: 0,
   questions: [],
+  isAuthorizationRequired: false,
 };
 
 const isArtistAnswerCorrect = (userAnswer, question) =>
@@ -46,6 +46,13 @@ const ActionCreator = {
     };
   },
 
+  requiredAuthorization: (status) => {
+    return {
+      type: `REQUIRED_AUTHORIZATION`,
+      payload: status,
+    };
+  },
+
   resetGame: () => {
     return {
       type: `RESET_GAME`,
@@ -54,7 +61,7 @@ const ActionCreator = {
 };
 
 const Operation = {
-  loadQuestions: () => (dispatch) => {
+  loadQuestions: () => (dispatch, _getState, api) => {
     return api.get(`/questions`)
     .then((response) => {
       dispatch(ActionCreator.loadQuestions(response.data));
@@ -76,6 +83,10 @@ const reducer = (state = initialState, action) => {
 
     case `LOAD_QUESTIONS`: return Object.assign({}, state, {
       questions: action.payload,
+    });
+
+    case `REQUIRED_AUTHORIZATION`: return Object.assign({}, state, {
+      isAuthorizationRequired: action.payload,
     });
   }
 

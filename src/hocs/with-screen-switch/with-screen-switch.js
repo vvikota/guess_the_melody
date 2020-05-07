@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 import {compose} from "recompose";
 
+import AuthorizationScreen from "../../components/authorization-screen/authorization-screen.jsx";
 import WelcomeScreen from "../../components/welcom-screen/welcom-screen.jsx";
 import GenreQuestionScreen from "../../components/genre-question-screen/genre-question-screen.jsx";
 import ArtistQuestionScreen from "../../components/artist-question-screen/artist-question-screen.jsx";
@@ -38,6 +39,9 @@ const withScreenSwitch = (Component) => {
     }
 
     _getScreen(question) {
+      if (this.props.isAuthorizationRequired) {
+        return <AuthorizationScreen />;
+      }
 
       if (!question) {
         const {step, questions} = this.props;
@@ -108,6 +112,7 @@ const withScreenSwitch = (Component) => {
     onWelcomeScreenClick: PropTypes.func.isRequired,
     onUserAnswer: PropTypes.func.isRequired,
     resetGame: PropTypes.func.isRequired,
+    isAuthorizationRequired: PropTypes.bool.isRequired,
   };
 
   return WithScreenSwitch;
@@ -119,6 +124,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   questions: state.questions,
   step: state.step,
   mistakes: state.mistakes,
+  isAuthorizationRequired: state.isAuthorizationRequired,
 });
 
 const mapDispatchToProps = (dispatch) => ({
