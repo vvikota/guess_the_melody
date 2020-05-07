@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {getStep} from "../../reducer/game/selectors.js";
+import {getQuestions} from "../../reducer/data/selectors.js";
 
 import ErrorCounter from "../errorCounter/errorCounter.jsx";
 
@@ -57,8 +59,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  questions: state.questions,
-  step: state.step,
+  questions: getQuestions(state),
+  step: getStep(state),
 });
 
 export {App};

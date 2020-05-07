@@ -7,7 +7,8 @@ import {compose} from "recompose";
 
 import App from "./components/app/app.jsx";
 import {createAPI} from "./api.js";
-import {reducer, Operation} from "./reducer.js";
+import reducer from "./reducer/index.js";
+import {Operation} from "./reducer/data/data.js";
 import withScreenSwitch from "./hocs/with-screen-switch/with-screen-switch.js";
 
 const gameSettings = {

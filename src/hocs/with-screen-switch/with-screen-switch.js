@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/game/game.js";
 import {compose} from "recompose";
 
 import AuthorizationScreen from "../../components/authorization-screen/authorization-screen.jsx";
@@ -13,6 +13,9 @@ import WinScreen from "../../components/win-screen/win-screen.jsx";
 import withActivePlayer from "../with-active-player/with-active-player.js";
 import withUserAnswer from "../with-user-answer/with-user-answer.js";
 import withTransformProps from "../with-transform-props/with-transform-props.js";
+import {getStep, getMistakes} from "../../reducer/game/selectors.js";
+import {getQuestions} from "../../reducer/data/selectors.js";
+import {getIsAuthorizationRequired} from "../../reducer/user/selectors.js";
 
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 const QuestionGenreScreenWrapped = withUserAnswer(
@@ -121,10 +124,10 @@ const withScreenSwitch = (Component) => {
 export {withScreenSwitch};
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  questions: state.questions,
-  step: state.step,
-  mistakes: state.mistakes,
-  isAuthorizationRequired: state.isAuthorizationRequired,
+  questions: getQuestions(state),
+  step: getStep(state),
+  mistakes: getMistakes(state),
+  isAuthorizationRequired: getIsAuthorizationRequired(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
