@@ -42,6 +42,7 @@ const withScreenSwitch = (Component) => {
     }
 
     _getScreen(question) {
+
       if (this.props.isAuthorizationRequired) {
         return <AuthorizationScreen />;
       }
@@ -73,6 +74,7 @@ const withScreenSwitch = (Component) => {
         mistakes,
         maxMistakes,
         resetGame,
+        step,
       } = this.props;
 
       if (mistakes >= maxMistakes) {
@@ -89,7 +91,7 @@ const withScreenSwitch = (Component) => {
               userAnswer,
               question
           )}
-          key={`genre-question-screen-${question}`}
+          key={`genre-question-screen-${step}`}
         />;
 
         case `artist` : return <ArtistQuestionScreenWrapped
@@ -98,7 +100,7 @@ const withScreenSwitch = (Component) => {
               userAnswer,
               question
           )}
-          key={`artist-question-screen-${question}`}
+          key={`artist-question-screen-${step}`}
         />;
       }
 

@@ -5,13 +5,14 @@ class ArtistQuestionScreen extends React.PureComponent {
 
   render() {
     const {question, onAnswer, renderPlayer} = this.props;
-
+    // eslint-disable-next-line no-console
+    // console.log(this.props);
     const {
       answers,
       song,
     } = question;
 
-    return <section className="game__screen">
+    return <section className="game__screen" key={`artist-question-screen-${question}`}>
       <h2 className="game__title">Кто исполняет эту песню?</h2>
       <div className="game__track">
 
