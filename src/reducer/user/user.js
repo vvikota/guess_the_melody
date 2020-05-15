@@ -1,6 +1,6 @@
 
 const initialState = {
-  isAuthorizationRequired: false,
+  isAuthorizationRequired: true,
 };
 
 const ActionCreator = {

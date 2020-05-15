@@ -2,9 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WinScreen = (props) => {
-  WinScreen.propTypes = {
-    onRelaunchButtonClick: PropTypes.func.isRequired,
-  };
 
   return <section className="result">
     <div className="result__logo">
@@ -15,6 +12,10 @@ const WinScreen = (props) => {
     <p className="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>
     <button className="replay" type="button" onClick={props.onRelaunchButtonClick}>Сыграть ещё раз</button>
   </section>;
+};
+
+WinScreen.propTypes = {
+  onRelaunchButtonClick: PropTypes.func.isRequired,
 };
 
 export default WinScreen;

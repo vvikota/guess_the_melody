@@ -32,7 +32,6 @@ class App extends React.Component {
             }}
           />
         </svg>
-
         {/* <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
           <span className="timer__mins">05</span>
           <span className="timer__dots">:</span>
@@ -42,7 +41,6 @@ class App extends React.Component {
         <ErrorCounter
           mistakes={mistakes}
         />
-
       </header>
 
       {this.props.renderScreen(questions[step])}
