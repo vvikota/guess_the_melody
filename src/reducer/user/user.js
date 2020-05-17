@@ -14,8 +14,20 @@ const ActionCreator = {
 };
 
 const Operation = {
-  requiredAuthorization: (status) => (dispatch) => {
-    return dispatch(ActionCreator.requiredAuthorization(status));
+  requiredAuthorization: (status) => (dispatch, _getState, api) => {
+    return api.post(`/login`, {
+      email: `test@test.com`,
+      password: 1234
+    })
+    .then((response) => {
+      // eslint-disable-next-line no-console
+      console.log(response.data);
+      dispatch(ActionCreator.requiredAuthorization(status));
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log(err.response.data.error);
+    });
   }
 };
 

@@ -2,16 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const AuthorizationScreen = (props) => {
-  // eslint-disable-next-line no-console
-  // console.log(props);
-  // eslint-disable-next-line no-console
-  // console.log(`props`);
 
-  // const handleClick = (e) => {
-  //   // e.preventDefault();
-  //   // eslint-disable-next-line no-console
-  //   console.log(`По кнопке кликнули.`);
-  // };
+  const _logIn = (e) => {
+    e.preventDefault();
+    props.onSignInButtonClick();
+  };
 
   return <section className="login">
     <div className="authorization-pic">
@@ -30,7 +25,7 @@ const AuthorizationScreen = (props) => {
         <input className="login__input" type="text" name="password" id="password" />
         <span className="login__error">Неверный пароль</span>
       </p>
-      <button className="login__button button" type="submit" onClick={props.onSignInButtonClick}>Войти</button>
+      <button className="login__button button" type="submit" onClick={_logIn}>Войти</button>
     </form>
 
   </section>;
