@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/game/game.js";
-// import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
 import {Operation} from "../../reducer/user/user.js";
 import {compose} from "recompose";
 
@@ -14,11 +13,14 @@ import GameOverScreen from "../../components/game-over-screen/game-over-screen.j
 import WinScreen from "../../components/win-screen/win-screen.jsx";
 import withActivePlayer from "../with-active-player/with-active-player.js";
 import withUserAnswer from "../with-user-answer/with-user-answer.js";
+import withAuthorization from "../with-authorization/with-authorization.js";
 import withTransformProps from "../with-transform-props/with-transform-props.js";
 import {getStep, getMistakes} from "../../reducer/game/selectors.js";
 import {getQuestions} from "../../reducer/data/selectors.js";
 import {getIsAuthorizationRequired} from "../../reducer/user/selectors.js";
 
+
+const AuthorizationScreenWrapped = withAuthorization(AuthorizationScreen);
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 const QuestionGenreScreenWrapped = withUserAnswer(
     withActivePlayer(
@@ -77,7 +79,7 @@ const withScreenSwitch = (Component) => {
 
       if (this.props.isAuthorizationRequired) {
         const {sendAuthorizationRequest} = this.props;
-        return <AuthorizationScreen
+        return <AuthorizationScreenWrapped
           onSignInButtonClick={sendAuthorizationRequest}
         />;
       }
