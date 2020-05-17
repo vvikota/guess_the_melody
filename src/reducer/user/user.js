@@ -1,10 +1,11 @@
 
 const initialState = {
   isAuthorizationRequired: true,
+  name: undefined,
+  password: undefined,
 };
 
 const ActionCreator = {
-
   requiredAuthorization: (status) => {
     return {
       type: `REQUIRED_AUTHORIZATION`,
@@ -14,15 +15,12 @@ const ActionCreator = {
 };
 
 const Operation = {
-  requiredAuthorization: (status) => (dispatch, _getState, api) => {
-    return api.post(`/login`, {
-      email: `test@test.com`,
-      password: 1234
-    })
+  requiredAuthorization: (data) => (dispatch, _getState, api) => {
+    return api.post(`/login`, data)
     .then((response) => {
       // eslint-disable-next-line no-console
       console.log(response.data);
-      dispatch(ActionCreator.requiredAuthorization(status));
+      dispatch(ActionCreator.requiredAuthorization(response.data));
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
@@ -35,7 +33,9 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case `REQUIRED_AUTHORIZATION`: return Object.assign({}, state, {
-      isAuthorizationRequired: action.payload,
+      isAuthorizationRequired: false,
+      email: action.payload.email,
+      password: action.payload.password,
     });
   }
 

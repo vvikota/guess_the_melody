@@ -149,7 +149,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   resetGame: () => dispatch(ActionCreator.resetGame()),
-  sendAuthorizationRequest: () => dispatch(Operation.requiredAuthorization(false)),
+  sendAuthorizationRequest: (data) => dispatch(Operation.requiredAuthorization(data)),
 });
 
 export default compose(
