@@ -1,43 +1,36 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-class ArtistQuestionScreen extends React.PureComponent {
+const ArtistQuestionScreen = (props) => {
 
-  render() {
-    const {question, onAnswer, renderPlayer} = this.props;
-    // eslint-disable-next-line no-console
-    // console.log(this.props);
-    const {
-      answers,
-      song,
-    } = question;
+  const {question, onAnswer, renderPlayer} = props;
+  const {answers, song} = question;
 
-    return <section className="game__screen" key={`artist-question-screen-${question}`}>
-      <h2 className="game__title">Кто исполняет эту песню?</h2>
-      <div className="game__track">
+  return <section className="game__screen" key={`artist-question-screen-${question}`}>
+    <h2 className="game__title">Кто исполняет эту песню?</h2>
+    <div className="game__track">
 
-        {renderPlayer(song, 0)}
-      </div>
+      {renderPlayer(song, 0)}
+    </div>
 
-      <form className="game__artist">
-        {answers.map((it, i) => <div className="artist" key={i}>
-          <input
-            className="artist__input visually-hidden"
-            type="radio"
-            name="answer"
-            value={`artist-${i}`}
-            id={`artist-${i}`}
-            onChange={() => onAnswer(it)}
-          />
-          <label className="artist__name" htmlFor={`artist-${i}`}>
-            <img className="artist__picture" src={it.picture} alt={it.artist} />
-            {it.artist}
-          </label>
-        </div>)}
-      </form>
-    </section>;
-  }
-}
+    <form className="game__artist">
+      {answers.map((it, i) => <div className="artist" key={i}>
+        <input
+          className="artist__input visually-hidden"
+          type="radio"
+          name="answer"
+          value={`artist-${i}`}
+          id={`artist-${i}`}
+          onChange={() => onAnswer(it)}
+        />
+        <label className="artist__name" htmlFor={`artist-${i}`}>
+          <img className="artist__picture" src={it.picture} alt={it.artist} />
+          {it.artist}
+        </label>
+      </div>)}
+    </form>
+  </section>;
+};
 
 ArtistQuestionScreen.propTypes = {
   onAnswer: PropTypes.func,

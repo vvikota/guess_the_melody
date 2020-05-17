@@ -37,7 +37,7 @@ const AuthorizationScreen = (props) => {
     </form>
 
   </section>;
-}
+};
 
 AuthorizationScreen.propTypes = {
   onChange: PropTypes.func.isRequired,
