@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/game/game.js";
-import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
+// import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
+import {Operation} from "../../reducer/user/user.js";
 import {compose} from "recompose";
 
 import AuthorizationScreen from "../../components/authorization-screen/authorization-screen.jsx";
@@ -72,18 +73,18 @@ const withScreenSwitch = (Component) => {
         maxMistakes,
         resetGame,
         step,
-        sendRequest,
       } = this.props;
+
+      if (this.props.isAuthorizationRequired) {
+        const {sendAuthorizationRequest} = this.props;
+        return <AuthorizationScreen
+          onSignInButtonClick={sendAuthorizationRequest}
+        />;
+      }
 
       if (mistakes >= maxMistakes) {
         return <GameOverScreen
           onRelaunchButtonClick={resetGame}
-        />;
-      }
-
-      if (this.props.isAuthorizationRequired) {
-        return <AuthorizationScreen
-          onSignInButtonClick={sendRequest}
         />;
       }
 
@@ -122,7 +123,7 @@ const withScreenSwitch = (Component) => {
     onUserAnswer: PropTypes.func.isRequired,
     resetGame: PropTypes.func.isRequired,
     isAuthorizationRequired: PropTypes.bool.isRequired,
-    sendRequest: PropTypes.func.isRequired,
+    sendAuthorizationRequest: PropTypes.func.isRequired,
   };
 
   return WithScreenSwitch;
@@ -148,7 +149,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   resetGame: () => dispatch(ActionCreator.resetGame()),
-  sendRequest: () => dispatch(UserActionCreator.requiredAuthorization(false)),
+  sendAuthorizationRequest: () => dispatch(Operation.requiredAuthorization(false)),
 });
 
 export default compose(

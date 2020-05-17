@@ -13,6 +13,12 @@ const ActionCreator = {
   },
 };
 
+const Operation = {
+  requiredAuthorization: (status) => (dispatch) => {
+    return dispatch(ActionCreator.requiredAuthorization(status));
+  }
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -27,5 +33,6 @@ const reducer = (state = initialState, action) => {
 export {
   reducer,
   ActionCreator,
+  Operation
 };
 
