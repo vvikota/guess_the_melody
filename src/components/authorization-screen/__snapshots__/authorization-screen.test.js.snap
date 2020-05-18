@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorizationScreen renders 1`] = `
+<section
+  className="login"
+>
+  <div
+    className="authorization-pic"
+  >
+    <img
+      alt="logo"
+      src="./img/authorization.png"
+      width="140"
+    />
+  </div>
+  <h2
+    className="login__title"
+  >
+    Необходима авторизация
+  </h2>
+  <p
+    className="login__text"
+  >
+    Представтесь:
+  </p>
+  <form
+    action=""
+    className="login__form"
+  >
+    <p
+      className="login__field"
+    >
+      <label
+        className="login__label"
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className="login__input"
+        id="email"
+        name="email"
+        onChange={[MockFunction]}
+        type="text"
+      />
+    </p>
+    <p
+      className="login__field"
+    >
+      <label
+        className="login__label"
+        htmlFor="password"
+      >
+        Пароль
+      </label>
+      <input
+        className="login__input"
+        id="password"
+        name="password"
+        onChange={[MockFunction]}
+        type="text"
+      />
+      <span
+        className="login__error"
+      >
+        Неверный пароль
+      </span>
+    </p>
+    <button
+      className="login__button button"
+      onClick={[MockFunction]}
+      type="submit"
+    >
+      Войти
+    </button>
+  </form>
+</section>
+`;
