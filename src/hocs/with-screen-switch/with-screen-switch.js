@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/game/game.js";
 import {Operation} from "../../reducer/user/user.js";
 import {compose} from "recompose";
+import {Switch, Route} from "react-router-dom";
 
 import AuthorizationScreen from "../../components/authorization-screen/authorization-screen.jsx";
 import WelcomeScreen from "../../components/welcom-screen/welcom-screen.jsx";
@@ -39,10 +40,13 @@ const withScreenSwitch = (Component) => {
     }
 
     render() {
-      return <Component
-        {...this.props}
-        renderScreen={this._getScreen}
-      />;
+      return <Switch>
+        <Route path="/" exact render={() => <Component
+          {...this.props}
+          renderScreen={this._getScreen}
+        />} />
+        <Route path="/login" component={AuthorizationScreenWrapped} />
+      </Switch>;
     }
 
     _getScreen(question) {
@@ -76,13 +80,6 @@ const withScreenSwitch = (Component) => {
         resetGame,
         step,
       } = this.props;
-
-      if (this.props.isAuthorizationRequired) {
-        const {sendAuthorizationRequest} = this.props;
-        return <AuthorizationScreenWrapped
-          onSignInButtonClick={sendAuthorizationRequest}
-        />;
-      }
 
       if (mistakes >= maxMistakes) {
         return <GameOverScreen

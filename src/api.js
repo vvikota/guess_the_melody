@@ -11,8 +11,9 @@ export const createAPI = () => {
   const onSuccess = (response) => response;
   const onFail = (err) => {
     if (err.response.status === 403) {
+      history.pushState(null, null, `/login`);
       // eslint-disable-next-line no-console
-      console.log(`обработал ошибку 403`);
+      // console.log(`обработал ошибку 403`);
       // dispatch(ActionCreator.requiredAuthorization(true));
     }
     return err;

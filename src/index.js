@@ -4,6 +4,7 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {compose} from "recompose";
+import {BrowserRouter} from "react-router-dom";
 
 import App from "./components/app/app.jsx";
 import {createAPI} from "./api.js";
@@ -20,7 +21,7 @@ const AppWrapped = withScreenSwitch(App);
 
 const init = () => {
   const {maxMistakes, gameTime} = gameSettings;
-  const api = createAPI((...args) => store.dispatch(...args));
+  const api = createAPI();
 
   const store = createStore(
       reducer,
@@ -33,10 +34,12 @@ const init = () => {
   store.dispatch(Operation.loadQuestions());
 
   ReactDOM.render(<Provider store={store}>
-    <AppWrapped
-      gameTime={gameTime}
-      maxMistakes={maxMistakes}
-    />
+    <BrowserRouter>
+      <AppWrapped
+        gameTime={gameTime}
+        maxMistakes={maxMistakes}
+      />
+    </BrowserRouter>
   </Provider>,
   document.querySelector(`.main`));
 };
