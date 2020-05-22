@@ -45,7 +45,10 @@ const withScreenSwitch = (Component) => {
           {...this.props}
           renderScreen={this._getScreen}
         />} />
-        <Route path="/login" component={AuthorizationScreenWrapped} />
+        <Route path="/login" exact render={() => <AuthorizationScreenWrapped
+          onSignInButtonClick={this.props.sendAuthorizationRequest}
+        />} />
+        <Route path="/win" component={WinScreen} />
       </Switch>;
     }
 

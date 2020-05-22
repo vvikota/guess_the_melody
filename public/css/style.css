@@ -886,7 +886,9 @@ img {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  margin-top: 220px;
+}
 
 .login__logo {
   margin: 0;
@@ -1247,4 +1249,8 @@ img {
 
   .authorization-pic{
     margin-top: 50px;
+  }
+
+  .result-win{
+    margin-top: 220px;
   }

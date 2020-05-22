@@ -2,7 +2,7 @@
 
 exports[`WinScreen renders 1`] = `
 <section
-  className="result"
+  className="result result-win"
 >
   <div
     className="result__logo"

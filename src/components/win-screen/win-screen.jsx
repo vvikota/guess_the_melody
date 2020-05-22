@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const WinScreen = (props) => {
 
-  return <section className="result">
+  return <section className="result result-win">
     <div className="result__logo">
       <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
     </div>

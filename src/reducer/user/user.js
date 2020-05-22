@@ -21,6 +21,7 @@ const Operation = {
       // eslint-disable-next-line no-console
       // console.log(response.data);
       dispatch(ActionCreator.requiredAuthorization(response.data));
+      history.pushState(null, null, `/win`);
     })
     .catch((err) => {
       // eslint-disable-next-line no-console

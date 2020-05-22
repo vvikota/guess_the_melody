@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 const AuthorizationScreen = (props) => {
   const {onChange, logIn} = props;
+  // eslint-disable-next-line no-console
+  // console.log(props.logIn);
 
   return <section className="login">
     <div className="authorization-pic">
