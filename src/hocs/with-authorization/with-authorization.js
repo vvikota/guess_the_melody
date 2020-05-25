@@ -27,8 +27,6 @@ const withAuthorization = (Component) => {
       this.setState({
         [e.target.name]: e.target.value,
       });
-      // eslint-disable-next-line no-console
-      console.log(this.state);
     }
 
     render() {

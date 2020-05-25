@@ -10,6 +10,8 @@ it(`Click on loginIn button, correctly works`, () => {
   const logInScreen = shallow(<AuthorizationScreen
     onChange={jest.fn()}
     logIn={clickHandler}
+    email={`test@test.ru`}
+    password={`pass`}
   />);
 
   const logInButton = logInScreen.find(`button`);

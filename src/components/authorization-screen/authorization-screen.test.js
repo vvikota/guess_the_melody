@@ -7,6 +7,8 @@ it(`AuthorizationScreen renders`, ()=> {
     .create(<AuthorizationScreen
       onChange={jest.fn()}
       logIn={jest.fn()}
+      email={`test@test.ru`}
+      password={`pass`}
     />)
     .toJSON();
 
