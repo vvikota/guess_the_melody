@@ -27,6 +27,8 @@ const withAuthorization = (Component) => {
       this.setState({
         [e.target.name]: e.target.value,
       });
+      // eslint-disable-next-line no-console
+      console.log(this.state);
     }
 
     render() {
@@ -34,6 +36,8 @@ const withAuthorization = (Component) => {
         {...this.props}
         onChange={this._onChange}
         logIn={this._logIn}
+        email={this.state.email}
+        password={this.state.password}
       />;
     }
   }

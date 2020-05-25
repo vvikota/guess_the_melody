@@ -19,7 +19,7 @@ const Operation = {
     return api.post(`/login`, data)
     .then((response) => {
       // eslint-disable-next-line no-console
-      // console.log(response.data);
+      console.log(response.data);
       dispatch(ActionCreator.requiredAuthorization(response.data));
       history.pushState(null, null, `/win`);
     })

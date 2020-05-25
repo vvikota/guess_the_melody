@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const AuthorizationScreen = (props) => {
-  const {onChange, logIn} = props;
+  const {onChange, logIn, email, password} = props;
   // eslint-disable-next-line no-console
   // console.log(props.logIn);
 
@@ -21,6 +21,7 @@ const AuthorizationScreen = (props) => {
           type="text"
           name="email"
           id="email"
+          value={email}
           onChange={onChange}
         />
       </p>
@@ -31,6 +32,7 @@ const AuthorizationScreen = (props) => {
           type="text"
           name="password"
           id="password"
+          value={password}
           onChange={onChange}
         />
         <span className="login__error">Неверный пароль</span>
@@ -44,6 +46,8 @@ const AuthorizationScreen = (props) => {
 AuthorizationScreen.propTypes = {
   onChange: PropTypes.func.isRequired,
   logIn: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired
 };
 
 export default AuthorizationScreen;
